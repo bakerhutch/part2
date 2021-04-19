@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Persons = ({ persons, filter }) => {
+const DeleteButton = ({id , handleDelete}) => {
+  return (
+    <button name={id} type='button' onClick={()=>handleDelete(id)}>
+      delete
+    </button>
+  )
+}
+
+const Persons = ({ persons, filter, handleDelete }) => {
   const regexp = new RegExp(filter, "i");
   const newArr = persons.filter((x) => regexp.test(x.name));
   if (filter) {
@@ -8,7 +16,7 @@ const Persons = ({ persons, filter }) => {
       <>
         {newArr.map((x) => (
           <div key={x.name}>
-            {x.name} {x.number}
+            {x.name} {x.number} <DeleteButton id={x.id} />
           </div>
         ))}
       </>
@@ -18,7 +26,7 @@ const Persons = ({ persons, filter }) => {
       <>
         {persons.map((x) => (
           <div key={x.name}>
-            {x.name} {x.number}
+            {x.name} {x.number} <DeleteButton id={x.id} handleDelete={handleDelete}/>
           </div>
         ))}
       </>
