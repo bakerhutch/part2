@@ -1,4 +1,5 @@
 import React from "react";
+import Weather from './Weather'
 
 const Match = ({ country }) => {
     console.log('Results <Match>');
@@ -7,7 +8,7 @@ const Match = ({ country }) => {
       <h1>{country.name}</h1>
       <div>capital {country.capital}</div>
       <div>population {country.population}</div>
-      <h2>languages</h2>
+      <h2>Spoken languages</h2>
       <ul>
         {country.languages.map((x) => (
           <li key={x.name}>{x.name}</li>
@@ -32,28 +33,14 @@ const Button = ({ country, handleClick }) => {
   }
 };
 
-const Weather = ({country, weather}) => {
-  console.log(country)
-  const capital = country.capital
-  return (
-    <div>
-      <h3>Weather in {capital}</h3>
-      <div>temperature: {weather.temp}</div>
-      {/* <div>Weather: {weather}</div>
-      <div>wind: {wind}</div> */}
-      Worked
-    </div>
-  )
-}
-
-const Results = ({ countries, length, handleClick, weather }) => {
+const Results = ({ countries, length, handleClick, weather, setWeather }) => {
   if (length > 10) {
     return <div>Too many matches, specify another filter</div>;
   } else if (length === 1) {
     return (
       <div>
     <Match country={countries[0]} />
-    {/* <Weather country={countries[0]} weather={weather}/> */}
+    <Weather country={countries[0]} weather={weather} setWeather={setWeather}/>
     </div>
     )
   } else {
