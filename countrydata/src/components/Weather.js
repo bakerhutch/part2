@@ -8,7 +8,7 @@ const Weather = ({ country, weather, setWeather }) => {
         axios
           .get(url)
           .then(response => {
-            console.log(`useEffect ${response.data}`)
+            console.log(`useEffect`)
             setWeather(response.data)
           });
       },[]);
