@@ -35,19 +35,17 @@ const App = () => {
   const regexp = new RegExp(filter, "i");
   const newArr = countries.filter((x) => regexp.test(x.name));
   const length = newArr.length;
-  if (length ===1) {
-    setWeather(!weather)
-  } else if ()
+  console.log(newArr[0])
 
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${newArr[0].capital},${newArr[0].alpha2code}&appid=${process.env.REACT_APP_OPEN_WEATHER}`
+  //const url = `http://api.openweathermap.org/data/2.5/weather?q=${newArr[0].capital},${newArr[0].alpha2Code}&appid=${process.env.REACT_APP_OPEN_WEATHER}`
 
-  useEffect(() => {
+  /*useEffect(() => {
     axios
       .get(url)
       .then(response => {
         console.log(response.data)
       })
-  },[weather])
+  })*/
 
   return (
     <div>

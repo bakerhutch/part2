@@ -1,8 +1,7 @@
 import React from "react";
 
 const Match = ({ country }) => {
-    console.log(country);
-    console.log(country.languages)
+    console.log('Results <Match>');
   return (
     <div>
       <h1>{country.name}</h1>
@@ -34,11 +33,12 @@ const Button = ({ country, handleClick }) => {
 };
 
 const Weather = ({country, weather}) => {
+  console.log(country)
   const capital = country.capital
   return (
     <div>
       <h3>Weather in {capital}</h3>
-      <div>temperature: {countryWeather.temp}</div>
+      <div>temperature: {weather.temp}</div>
       {/* <div>Weather: {weather}</div>
       <div>wind: {wind}</div> */}
       Worked
@@ -46,14 +46,14 @@ const Weather = ({country, weather}) => {
   )
 }
 
-const Results = ({ countries, length, handleClick, setWeather }) => {
+const Results = ({ countries, length, handleClick, weather }) => {
   if (length > 10) {
     return <div>Too many matches, specify another filter</div>;
   } else if (length === 1) {
     return (
       <div>
     <Match country={countries[0]} />
-    <Weather country={countries[0]} weather={weather}/>
+    {/* <Weather country={countries[0]} weather={weather}/> */}
     </div>
     )
   } else {
